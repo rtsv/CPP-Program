@@ -1,0 +1,15 @@
+void leftRotate(int array[], int size, int rotateBy)
+{
+    int temp[rotateBy];
+    int i,j=0;
+    
+    for(i=0;i<rotateBy;i++)
+    temp[i] = array[i];
+    
+    for(i=0;i<size-rotateBy;i++)
+    array[i] = array[i+rotateBy];
+    
+    for(;i<size;i++,j++)
+    array[i] = temp[j];
+    
+}
