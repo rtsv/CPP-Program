@@ -41,6 +41,26 @@ void Rdisplay(struct Node *q)
         Rdisplay(q->address);
     }
 }
+
+int Add(struct Node *p)
+{
+    int sum=0;
+    while(p)
+    {
+        sum=sum+p->data;
+        p=p->address;
+    }
+    return sum;
+}
+int Radd(struct Node *p)
+{
+    int sum =0;
+    if(p==NULL)
+    return 0;
+    else
+    return Radd(p->address)+p->data;
+}
+
 int main()
 {
     struct Node *first;
@@ -48,7 +68,7 @@ int main()
     int a[]={1,5,6,2,4,8};
     int n=6;
     first = create(a,n);
-    Rdisplay(first);
+    printf("%d",Radd(first));
 
     return 0;
 }
