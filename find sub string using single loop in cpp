@@ -1,0 +1,29 @@
+// str = "application==http"
+// str2 = "application== ethernet"
+
+#include<bits/stdc++.h>
+using namespace std;
+
+string stringfind(string str )
+{
+    string s;
+    int i=0;
+    int count=0;
+    while(str[i]!='\0')
+    {
+        if(str[i]=='=')
+            count++;
+        if(count==2)
+        if(str[i+1]!=' ')
+            s+=str[i+1];
+        i++; 
+    }
+    return s;
+}
+int main()
+{
+    string str1 = "application ==http";
+    string str2 = "application==     ethernet";
+    cout<<stringfind(str1)<<endl;//http
+    cout<<stringfind(str2);//ethernet
+}
