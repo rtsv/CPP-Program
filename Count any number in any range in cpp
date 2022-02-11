@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int countNum(int i,int num1)
+{
+    int count=0, rem;
+        while(i!=0)
+        {
+            rem = i%10;
+            i=i/10;
+            if(rem==num1)
+                count++;
+        }
+    return count;
+}
+int main()
+{
+    int count2=0;
+    int num=2;// number which you want to count
+    int range=30;// range from 1 to 30
+    for(int i=1;i<=range;i++)
+    {
+        count2+=countNum(i,num); 
+    }
+    cout<<count2;
+}
