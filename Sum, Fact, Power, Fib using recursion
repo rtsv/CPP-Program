@@ -22,11 +22,23 @@ int powRec(int m,int n)
         return 1;
     return powRec(m,n-1)*m;
 }
-
+// fibonacci using recursion
+int fibRec(int count)
+{
+       
+    if(count<=1)
+        return count;
+    return fibRec(count-2)+fibRec(count-1);
+    
+}
 int main()
 {
-    int p=5;
+    int p=9;
     cout<<sumRec(p)<<endl;
     cout<<factRec(p)<<endl;
     cout<<powRec(p,3)<<endl;
+    for(int i=0;i<p;i++)
+    {
+        cout<<fibRec(i)<<" ";
+    }
 }
