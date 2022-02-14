@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+// Sum using recursion
+int sumRec(int n)
+{
+    if(n==0)
+        return 0;
+    return sumRec(n-1)+n;
+}
+// factorial using recursion
+int factRec(int n)
+{
+    if(n==0)
+        return 1;
+    return factRec(n-1)*n;
+}
+// power using recursion
+// powRec(5,2) i.e. 5^2
+int powRec(int m,int n)
+{
+    if(n==0)
+        return 1;
+    return powRec(m,n-1)*m;
+}
+
+int main()
+{
+    int p=5;
+    cout<<sumRec(p)<<endl;
+    cout<<factRec(p)<<endl;
+    cout<<powRec(p,3)<<endl;
+}
