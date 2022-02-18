@@ -1,0 +1,104 @@
+#include<bits/stdc++.h>
+using namespace std;
+void swap(int *a,int *b)
+{
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+}
+void insert(int a[],int n,int index,int x)
+{
+    for(int i=n;i>index;i--)
+        a[i]=a[i-1];
+    a[index]=x;
+    n++;
+}
+void deleteA(int a[],int n,int index)
+{
+    
+    for(int i=index;i<n;i++)
+       a[i]=a[i+1];
+    n--;
+}
+int biSearch(int a[],int n,int key)
+{
+    int l=0;
+    int h=n-1;
+
+    while(l<=h)
+    {
+        int mid=(l+h)/2;
+        if(key==a[mid])
+            return mid;
+        else if(key>a[mid])
+            l=mid+1;
+        else
+            h=mid-1;
+    }
+    return -1;
+}
+void display(int a[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<" ";
+    }
+}
+void revByCopy(int a[],int n)
+{
+    int b[n]={0};
+    for(int i=n-1,j=0;i>=0,j<n;i--,j++)
+        b[j]=a[i];
+        
+    for(int i=0;i<n;i++)
+        a[i]=b[i];
+}
+void revBySwap(int a[],int n)
+{
+    for(int i=0,j=n-1;i<j;i++,j--)
+    {
+        swap(a[i],a[j]);
+    }
+}
+int sortedA(int a[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>a[i+1])
+            return 0;
+    }
+    return 1;
+}
+int mergeArr(int a[],int n, int b[], int m)
+{
+    int c[m+n]={0};
+    int i,j,k;
+    i=j=k=0;
+    while(i<n && j<m)
+    {
+        if(a[i]<=b[j])
+            c[k++]=a[i++];
+        else
+            c[k++]=b[j++];
+    }
+    for(;i<n;i++)
+        c[k++]=a[i++];
+    for(;j<m;j++)
+        c[k++]=b[j++];
+    for(int i=0;i<m+n;i++)
+        cout<<c[i]<<" ";
+}
+
+int main()
+{
+    int a[]={1,3,4,6,7};
+    int b[]={2,5,8,10};
+    // insert(a,7,5,9);
+    // deleteA(a,7,5);
+    // cout<<biSearch(a,7,7)<<endl;
+    // revByCopy(a,7);
+    // revBySwap(a,7);
+    // cout<<sortedA(a,7)<<endl;
+    mergeArr(a,5,b,4);
+    // display(a,5);
+}
