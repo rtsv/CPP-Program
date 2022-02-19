@@ -1,11 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
+// swapping two number
 void swap(int *a,int *b)
 {
     int temp=*a;
     *a=*b;
     *b=temp;
 }
+// insert element at given index in array
 void insert(int a[],int n,int index,int x)
 {
     for(int i=n;i>index;i--)
@@ -13,6 +15,7 @@ void insert(int a[],int n,int index,int x)
     a[index]=x;
     n++;
 }
+// Delete element of a prticular index;
 void deleteA(int a[],int n,int index)
 {
     
@@ -20,6 +23,7 @@ void deleteA(int a[],int n,int index)
        a[i]=a[i+1];
     n--;
 }
+// binary search on array
 int biSearch(int a[],int n,int key)
 {
     int l=0;
@@ -37,6 +41,7 @@ int biSearch(int a[],int n,int key)
     }
     return -1;
 }
+// Dispaly all elements of an array
 void display(int a[],int n)
 {
     for(int i=0;i<n;i++)
@@ -44,6 +49,7 @@ void display(int a[],int n)
         cout<<a[i]<<" ";
     }
 }
+// Reverse array with help of third array
 void revByCopy(int a[],int n)
 {
     int b[n]={0};
@@ -53,6 +59,7 @@ void revByCopy(int a[],int n)
     for(int i=0;i<n;i++)
         a[i]=b[i];
 }
+// reverse array by swapping elements
 void revBySwap(int a[],int n)
 {
     for(int i=0,j=n-1;i<j;i++,j--)
@@ -60,6 +67,7 @@ void revBySwap(int a[],int n)
         swap(a[i],a[j]);
     }
 }
+// Checking array is sorted or not
 int sortedA(int a[],int n)
 {
     for(int i=0;i<n;i++)
@@ -69,6 +77,7 @@ int sortedA(int a[],int n)
     }
     return 1;
 }
+// Merging of two array
 int mergeArr(int a[],int n, int b[], int m)
 {
     int c[m+n]={0};
@@ -90,17 +99,47 @@ int mergeArr(int a[],int n, int b[], int m)
     cout<<endl;
     return 0;
 }
+// finding missing elements from a sorted array
+int missingEarr(int a[],int n)
+{
+    int sum=0;
+    int aSum=n*(n+1)/2;
+    for(int i=0;i<n-1;i++)
+        sum=sum+a[i];
+        
+    return aSum-sum;
+}
+// finding missing elements from a unsorted array
+void missingEUarr(int a[],int n)
+{
+    int l=a[0];
+    // int h=a[n-1];
+    // n=h-l;
+    // cout<<n;
+    int diff=l-0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]-i!=diff)
+        {
+            cout<< i+diff<<" ";
+            break;
+        }
+    }
+    return 0;
+}
 
 int main()
 {
-    int a[]={1,3,4,6,7};
-    int b[]={2,5,8,9};
+    int a[]={1,2,3,4,6};
+    int b[]={3,5,6,7,8};
     // insert(a,7,5,9);
     // deleteA(a,7,5);
     // cout<<biSearch(a,7,7)<<endl;
     // revByCopy(a,7);
     // revBySwap(a,7);
     // cout<<sortedA(a,7)<<endl;
-    mergeArr(a,5,b,4);
+    // mergeArr(a,5,b,4);
+    // cout<<missingEarr(a,10);
+    missingEUarr(b,5);
     // display(a,5);
 }
