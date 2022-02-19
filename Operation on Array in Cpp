@@ -219,6 +219,24 @@ void duplicatesEH(int a[],int n)
             cout<<i<<" ";
     }
 }
+// find pair of elements with sum
+void sumPair(int a[],int n, int sum)
+{
+    int lasti=-1;
+    int lastj=-1;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[i]+a[j]==sum && lasti!=a[i])
+            {
+                cout<<"("<<a[i]<<","<<a[j]<<") ";
+                lasti=a[i];
+                lastj=a[j];
+            }
+        }
+    }
+}
 
 int main()
 {
@@ -238,8 +256,10 @@ int main()
     // cout<<minE(c,7);
     // missingES(c,7);
     // missingHash(c,7);
-    int d[]={4,8,6,4,4,4,5,5,5,5};
-    duplicatesE(d,10);
-    duplicatesEH(d,10);
+    // int d[]={4,8,6,4,4,4,5,5,5,5};
+    // duplicatesE(d,10);
+    // duplicatesEH(d,10);
+    int e[]={4,7,9,3,6,1,8,3,6};
+    sumPair(e,9,10);
     // display(a,5);
 }
