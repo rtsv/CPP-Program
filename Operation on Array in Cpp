@@ -49,7 +49,7 @@ void display(int a[],int n)
         cout<<a[i]<<" ";
     }
 }
-// Reverse array with help of third array
+// Reverse array with help of second array
 void revByCopy(int a[],int n)
 {
     int b[n]={0};
