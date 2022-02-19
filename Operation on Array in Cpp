@@ -4,7 +4,7 @@ using namespace std;
 void swap(int *a,int *b)
 {
     int temp=*a;
-    *a=*b;
+   *a=*b;
     *b=temp;
 }
 // insert element at given index in array
@@ -110,7 +110,7 @@ int missingEarr(int a[],int n)
     return aSum-sum;
 }
 // finding missing elements from a unsorted array
-void missingEUarr(int a[],int n)
+int missingEUarr(int a[],int n)
 {
     int l=a[0];
     // int h=a[n-1];
@@ -121,11 +121,103 @@ void missingEUarr(int a[],int n)
     {
         if(a[i]-i!=diff)
         {
-            cout<< i+diff<<" ";
+            return i+diff;
             break;
         }
     }
     return 0;
+}
+// find missing multiple elements from unsorted array
+void missingES(int a[],int n)
+{
+    int l=a[0];
+    int h=a[n-1];
+    // n=h-l;
+    // cout<<n;
+    int diff=a[0]-0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]-i!=diff)
+        {
+            while(diff<a[i]-i)
+            {
+                cout<<i+diff<<" ";
+                diff++;
+                
+            }
+        }
+    }
+}
+// Find max elements in array
+int maxE(int a[],int n)
+{
+    int max=a[0];
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>max)
+            max=a[i];
+    }
+    return max;
+}
+// Find min elements from an array
+int minE(int a[],int n)
+{
+    int min=a[0];
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]<min)
+            min=a[i];
+    }
+    return min;
+}
+// method second using hashing
+void missingHash(int a[],int n)
+{
+    int l=minE(a,n);
+    int h=maxE(a,n);
+    int H[h]={0};
+    for(int i=0;i<n;i++)
+    {
+        H[a[i]]=1;
+    }
+    for(int i=l;i<=h;i++)
+    {
+        if(H[i]==0)
+            cout<<i<<" ";
+    }
+    
+}
+// Find duplicates in array
+void duplicatesE(int a[],int n)
+{
+    int lastDuplicates=-1;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(a[i]==a[j] && a[j]!=lastDuplicates)
+            {
+                lastDuplicates=a[i];
+                cout<<a[i]<<" ";
+            }
+        }
+    }
+}
+// Find duplicates second method using hashing
+void duplicatesEH(int a[],int n)
+{
+    int l=minE(a,n);
+    int h=maxE(a,n);
+    int H[h]={0};
+    for(int i=0;i<n;i++)
+    {
+        H[a[i]]++;
+    }
+    for(int i=l;i<=h;i++)
+    {
+        if(H[i]>1)
+            cout<<i<<" ";
+    }
 }
 
 int main()
@@ -140,6 +232,14 @@ int main()
     // cout<<sortedA(a,7)<<endl;
     // mergeArr(a,5,b,4);
     // cout<<missingEarr(a,10);
-    missingEUarr(b,5);
+    // cout<<missingEUarr(b,5);
+    int c[]={5,6,9,14,16,17,20};
+    // cout<<maxE(c,7)<<" ";
+    // cout<<minE(c,7);
+    // missingES(c,7);
+    // missingHash(c,7);
+    int d[]={4,8,6,4,4,4,5,5,5,5};
+    duplicatesE(d,10);
+    duplicatesEH(d,10);
     // display(a,5);
 }
