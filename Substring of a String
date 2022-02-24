@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+void matchString(char s[],char sbs[])
+{
+    int temp;
+    for(int i=0;s[i]!='\0';i++)
+    {
+        int j=0;
+        if(s[i]==sbs[j])
+        {
+            temp=i+1;
+            while(sbs[j]==s[i])
+            {
+                cout<<sbs[j]<<s[i];
+                i++;
+                j++;
+            }
+            if(sbs[j]=='\0')
+            {
+                cout<<"match found";
+                exit(0);
+            }
+            else
+            {
+                i=temp;
+                temp=0;
+            }
+        }
+    }
+    if(temp==0)
+        cout<<"not found";
+}
+int main()
+{
+    char s[50]={"welcome to my country India"};
+    char sbs[10]={"India"};
+    matchString(s,sbs);
+}
