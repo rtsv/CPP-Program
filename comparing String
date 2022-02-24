@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int compare(string s1,string s2)
+{
+    int i,j;
+    if(s1.length()<s2.length())
+        cout<<"first is smaller";
+    else if(s1.length()>s2.length())
+        cout<<"second is smaller";
+    for(i=0,j=0;s1[i]!='\0',s2[j]!='\0';i++,j++)
+    {
+        if(s1[i]!=s2[j])
+            break;
+    }
+    if(s1[i]==s2[j])
+    {
+        return 1;
+    }
+    // else if(s1[i]>s2[j])
+    //     cout<<"first string is smaller ";
+    // else
+    //     cout<<"2nd string is smaller ";
+    return 0;
+}
+int main()
+{
+    string s1="ritesh";
+    string s2="ritesh";
+    cout<<compare(s1,s2);
+}
