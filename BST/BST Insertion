@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Node
+{
+public:
+    Node *lchild;
+    int data;
+    Node *rchild;
+};
+class binaryST
+{
+private:
+    Node *root;
+public:
+    binaryST()
+    {
+        root=nullptr;
+    }
+    Node *getRoot()
+    {
+        return root;
+    }
+    void insertNode(int key)
+    {
+        Node *t=root;
+        Node *p,*r;
+        if(root==nullptr)
+        {
+            p=new Node;
+            p->data=key;
+            p->lchild=p->rchild=nullptr;
+            root=p;
+            return;
+        }
+        while(t)
+        {
+            r=t;
+            if(key<t->data)
+                t=t->lchild;
+            else if(key>t->data)
+                t=t->rchild;
+            else
+                return;
+        }
+        p=new Node;
+        p->data=key;
+        p->lchild=p->rchild=nullptr;
+        if(key<r->data)
+            r->lchild=p;
+        else
+            r->rchild=p;   
+    }
+    void inOrder(Node *root)
+    {
+        if(root)
+        {
+            inOrder(root->lchild);
+            cout<<root->data<<" ";
+            inOrder(root->rchild);
+        }
+    }
+};
+int main()
+{
+    binaryST b1;
+    b1.insertNode(5);
+    b1.insertNode(2);
+    b1.insertNode(10);
+    b1.insertNode(6);
+    b1.insertNode(4);
+    b1.insertNode(1);
+    b1.insertNode(9);
+    b1.inOrder(b1.getRoot());
+    
+}
